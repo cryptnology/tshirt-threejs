@@ -19,13 +19,6 @@ const Home = () => {
           className="w-fit xl:h-full flex xl:justify-between justify-start items-start flex-col xl:py-8 xl:px-36 sm:p-8 p-6 max-xl:gap-7 absolute z-10"
           {...slideAnimation('left')}
         >
-          <motion.header className="header" {...slideAnimation('down')}>
-            <img
-              className="w-8 h-8 object-contain"
-              src="./threejs.png"
-              alt="logo"
-            />
-          </motion.header>
           <motion.div
             className="flex-1 xl:justify-center justify-start flex flex-col gap-10"
             {...headContainerAnimation}
