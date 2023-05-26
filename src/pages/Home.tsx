@@ -7,48 +7,50 @@ import {
   headTextAnimation,
   slideAnimation,
 } from '../config/motion';
-import { CustomButton } from '../components';
+import { Container, CustomButton } from '../components';
 
 const Home = () => {
   const snap = useSnapshot(state);
 
   return (
-    <AnimatePresence>
-      {snap.intro && (
-        <motion.section
-          className="w-fit xl:h-full flex xl:justify-between justify-start items-start flex-col xl:py-8 max-xl:gap-7 absolute z-10"
-          {...slideAnimation('left')}
-        >
-          <motion.div
-            className="flex-1 xl:justify-center justify-start flex flex-col gap-10"
-            {...headContainerAnimation}
+    <Container>
+      <AnimatePresence>
+        {snap.intro && (
+          <motion.section
+            className="w-fit xl:h-full flex xl:justify-between justify-start items-start flex-col xl:py-8 max-xl:gap-7 absolute z-10"
+            {...slideAnimation('left')}
           >
-            <motion.div {...headTextAnimation}>
-              <h1 className="xl:text-[10rem] text-[6rem] xl:leading-[11rem] leading-[7rem] font-black">
-                LET'S <br className="xl:block hidden" /> DO IT.
-              </h1>
-            </motion.div>
             <motion.div
-              className="flex flex-col gap-5"
+              className="flex-1 xl:justify-center justify-start flex flex-col gap-10"
               {...headContainerAnimation}
             >
-              <p className="max-w-md font-normal opacity-70 text-base">
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Totam,
-                officia vitae recusandae mollitia tenetur animi saepe
-                voluptatibus sapiente velit, ut placeat iste ratione quaerat
-                nostrum quas ipsa nihil rem nulla.
-              </p>
+              <motion.div {...headTextAnimation}>
+                <h1 className="xl:text-[10rem] text-[6rem] xl:leading-[11rem] leading-[7rem] font-black">
+                  LET'S <br className="xl:block hidden" /> DO IT.
+                </h1>
+              </motion.div>
+              <motion.div
+                className="flex flex-col gap-5"
+                {...headContainerAnimation}
+              >
+                <p className="max-w-md font-normal opacity-70 text-base">
+                  Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                  Totam, officia vitae recusandae mollitia tenetur animi saepe
+                  voluptatibus sapiente velit, ut placeat iste ratione quaerat
+                  nostrum quas ipsa nihil rem nulla.
+                </p>
+              </motion.div>
+              <CustomButton
+                customStyles="w-fit px-4 py-2.5 font-bold text-sm"
+                type="filled"
+                title="Customise It"
+                handleClick={() => (state.intro = false)}
+              />
             </motion.div>
-            <CustomButton
-              customStyles="w-fit px-4 py-2.5 font-bold text-sm"
-              type="filled"
-              title="Customise It"
-              handleClick={() => (state.intro = false)}
-            />
-          </motion.div>
-        </motion.section>
-      )}
-    </AnimatePresence>
+          </motion.section>
+        )}
+      </AnimatePresence>
+    </Container>
   );
 };
 
