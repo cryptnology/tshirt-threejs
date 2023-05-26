@@ -16,7 +16,7 @@ const Home = () => {
     <AnimatePresence>
       {snap.intro && (
         <motion.section
-          className="w-fit xl:h-full flex xl:justify-between justify-start items-start flex-col xl:py-8 xl:px-36 sm:p-8 p-6 max-xl:gap-7 absolute z-10"
+          className="w-fit xl:h-full flex xl:justify-between justify-start items-start flex-col xl:py-8 max-xl:gap-7 absolute z-10"
           {...slideAnimation('left')}
         >
           <motion.div
@@ -24,7 +24,7 @@ const Home = () => {
             {...headContainerAnimation}
           >
             <motion.div {...headTextAnimation}>
-              <h1 className="xl:text-[10rem] text-[6rem] xl:leading-[11rem] leading-[7rem] font-black text-black">
+              <h1 className="xl:text-[10rem] text-[6rem] xl:leading-[11rem] leading-[7rem] font-black">
                 LET'S <br className="xl:block hidden" /> DO IT.
               </h1>
             </motion.div>
@@ -32,7 +32,7 @@ const Home = () => {
               className="flex flex-col gap-5"
               {...headContainerAnimation}
             >
-              <p className="max-w-md font-normal text-gray-600 text-base">
+              <p className="max-w-md font-normal opacity-70 text-base">
                 Lorem, ipsum dolor sit amet consectetur adipisicing elit. Totam,
                 officia vitae recusandae mollitia tenetur animi saepe
                 voluptatibus sapiente velit, ut placeat iste ratione quaerat

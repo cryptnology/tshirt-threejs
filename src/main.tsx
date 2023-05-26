@@ -8,7 +8,7 @@ import './index.css';
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
     <Providers>
-      <div className="px-5 2xl:px-64 xl:px-44 lg:px-20 md:px-16 sm:px-10">
+      <div className="px-5 2xl:px-64 xl:px-44 lg:px-20 md:px-16 sm:px-10 bg-light dark:bg-dark text-dark dark:text-light transition">
         <Header />
         <App />
       </div>
