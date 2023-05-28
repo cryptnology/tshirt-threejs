@@ -7,7 +7,7 @@ const App = () => {
     <main className="relative w-full h-screen overflow-hidden transition-all">
       <Header />
       <Home />
-      {/* <Canvas /> */}
+      <Canvas />
       <Customizer />
     </main>
   );

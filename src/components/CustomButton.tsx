@@ -1,7 +1,3 @@
-import { useSnapshot } from 'valtio';
-
-import state from '../store';
-
 interface Props {
   type: string;
   title: string;
@@ -10,11 +6,9 @@ interface Props {
 }
 
 const CustomButton = ({ type, title, customStyles, handleClick }: Props) => {
-  const snap = useSnapshot(state);
-
   const generateStyle = (type: string) => {
     if (type === 'filled') {
-      return `${snap.color} bg-primary`;
+      return `text-dark bg-primary`;
     }
   };
   return (

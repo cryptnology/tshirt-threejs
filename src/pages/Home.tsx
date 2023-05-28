@@ -21,7 +21,7 @@ const Home = () => {
             {...slideAnimation('left')}
           >
             <motion.div
-              className="flex-1 xl:justify-center justify-start flex flex-col gap-10"
+              className="flex-1 xl:justify-center justify-start flex flex-col gap-10 mt-24 xl:mt-0"
               {...headContainerAnimation}
             >
               <motion.div {...headTextAnimation}>
@@ -40,12 +40,14 @@ const Home = () => {
                   nostrum quas ipsa nihil rem nulla.
                 </p>
               </motion.div>
-              <CustomButton
-                customStyles="w-fit px-4 py-2.5 font-bold text-sm"
-                type="filled"
-                title="Customise It"
-                handleClick={() => (state.intro = false)}
-              />
+              <div>
+                <CustomButton
+                  customStyles="w-fit px-4 py-2.5 font-bold text-sm"
+                  type="filled"
+                  title="Customise It"
+                  handleClick={() => (state.intro = false)}
+                />
+              </div>
             </motion.div>
           </motion.section>
         )}
