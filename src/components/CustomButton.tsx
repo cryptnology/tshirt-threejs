@@ -1,14 +1,30 @@
+import { useSnapshot } from 'valtio';
+
+import state from '../store';
+import { getContrastingColor } from '../config/helpers';
+
 interface Props {
-  type: string;
+  type: 'filled' | 'outline';
   title: string;
   customStyles: string;
   handleClick: () => void;
 }
 
 const CustomButton = ({ type, title, customStyles, handleClick }: Props) => {
+  const snap = useSnapshot(state);
+
   const generateStyle = (type: string) => {
     if (type === 'filled') {
-      return `text-dark bg-primary`;
+      return {
+        backgroundColor: snap.color,
+        color: getContrastingColor(snap.color),
+      };
+    } else if (type === 'outline') {
+      return {
+        borderWidth: '1px',
+        backgroundColor: snap.color,
+        color: getContrastingColor(snap.color),
+      };
     }
   };
   return (
@@ -17,6 +33,7 @@ const CustomButton = ({ type, title, customStyles, handleClick }: Props) => {
         type,
       )} ${customStyles}`}
       onClick={handleClick}
+      style={generateStyle(type)}
     >
       {title}
     </button>

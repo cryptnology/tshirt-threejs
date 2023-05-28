@@ -10,11 +10,13 @@ export const downloadCanvasToImage = () => {
   document.body.removeChild(link);
 };
 
-export const reader = (file: Blob) =>
-  new Promise((resolve) => {
-    const fileReader = new FileReader();
-    fileReader.onload = () => resolve(fileReader.result);
-    fileReader.readAsDataURL(file);
+export const reader = (file: Blob | null) =>
+  new Promise<string | ArrayBuffer | null>((resolve) => {
+    if (file !== null) {
+      const fileReader = new FileReader();
+      fileReader.onload = () => resolve(fileReader.result);
+      fileReader.readAsDataURL(file);
+    }
   });
 
 export const getContrastingColor = (color: string) => {

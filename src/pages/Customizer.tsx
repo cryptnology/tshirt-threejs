@@ -4,7 +4,7 @@ import { useSnapshot } from 'valtio';
 
 import state from '../store';
 import { fadeAnimation, slideAnimation } from '../config/motion';
-import { EditorTabs, FilterTabs } from '../config/constants';
+import { DecalTypes, EditorTabs, FilterTabs } from '../config/constants';
 import {
   AIPicker,
   ColorPicker,
@@ -12,9 +12,10 @@ import {
   FilePicker,
   Tab,
 } from '../components';
+import { reader } from '../config/helpers';
 
 const Customizer = () => {
-  const [file, setFile] = useState('');
+  const [file, setFile] = useState<File | null>(null);
   const [prompt, setPrompt] = useState('');
   const [generatingImg, setGeneratingImg] = useState(false);
   const [activeEditorTab, setActiveEditorTab] = useState('');
@@ -30,12 +31,53 @@ const Customizer = () => {
       case 'colorpicker':
         return <ColorPicker />;
       case 'filepicker':
-        return <FilePicker />;
+        return <FilePicker file={file} setFile={setFile} readFile={readFile} />;
       case 'aipicker':
         return <AIPicker />;
       default:
         return null;
     }
+  };
+
+  const handleDecals = (
+    type: keyof typeof DecalTypes,
+    result: string | ArrayBuffer | null,
+  ) => {
+    const decalType = DecalTypes[type];
+
+    // @ts-ignore
+    state[decalType.stateProperty] = result;
+
+    // @ts-ignore
+    if (!activeFilterTab[decalType.filterTab]) {
+      handleActiveFilterTab(decalType.filterTab);
+    }
+  };
+
+  const handleActiveFilterTab = (tabName: string) => {
+    switch (tabName) {
+      case 'logoShirt':
+        state.isLogoTexture = !activeFilterTab[tabName];
+        break;
+      case 'stylishShirt':
+        state.isFullTexture = !activeFilterTab[tabName];
+        break;
+      default:
+        state.isLogoTexture = true;
+        state.isFullTexture = false;
+    }
+
+    setActiveFilterTab((prevState) => {
+      // @ts-ignore
+      return { ...prevState, [tabName]: !prevState[tabName] };
+    });
+  };
+
+  const readFile = async (type: 'logo' | 'full') => {
+    const result = await reader(file);
+
+    handleDecals(type, result);
+    setActiveEditorTab('');
   };
 
   return (
@@ -81,8 +123,9 @@ const Customizer = () => {
                 key={tab.name}
                 tab={tab}
                 isFilterTab
-                isActiveTab=""
-                handleClick={() => {}}
+                // @ts-ignore
+                isActiveTab={activeFilterTab[tab.name]}
+                handleClick={() => handleActiveFilterTab(tab.name)}
               />
             ))}
           </motion.div>
