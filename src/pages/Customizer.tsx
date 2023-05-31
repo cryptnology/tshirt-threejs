@@ -5,19 +5,11 @@ import { useSnapshot } from 'valtio';
 import state from '../store';
 import { fadeAnimation, slideAnimation } from '../config/motion';
 import { DecalTypes, EditorTabs, FilterTabs } from '../config/constants';
-import {
-  AIPicker,
-  ColorPicker,
-  CustomButton,
-  FilePicker,
-  Tab,
-} from '../components';
+import { ColorPicker, CustomButton, FilePicker, Tab } from '../components';
 import { reader } from '../config/helpers';
 
 const Customizer = () => {
   const [file, setFile] = useState<File | null>(null);
-  const [prompt, setPrompt] = useState('');
-  const [generatingImg, setGeneratingImg] = useState(false);
   const [activeEditorTab, setActiveEditorTab] = useState('');
   const [activeFilterTab, setActiveFilterTab] = useState({
     logoShirt: true,
@@ -32,8 +24,6 @@ const Customizer = () => {
         return <ColorPicker />;
       case 'filepicker':
         return <FilePicker file={file} setFile={setFile} readFile={readFile} />;
-      case 'aipicker':
-        return <AIPicker />;
       default:
         return null;
     }

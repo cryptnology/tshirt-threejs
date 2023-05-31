@@ -1,4 +1,3 @@
-export { default as AIPicker } from './AIPicker';
 export { default as ColorPicker } from './ColorPicker';
 export { default as Container } from './Container';
 export { default as CustomButton } from './CustomButton';
