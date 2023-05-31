@@ -5,7 +5,13 @@ import { useSnapshot } from 'valtio';
 import state from '../store';
 import { fadeAnimation, slideAnimation } from '../config/motion';
 import { DecalTypes, EditorTabs, FilterTabs } from '../config/constants';
-import { ColorPicker, CustomButton, FilePicker, Tab } from '../components';
+import {
+  CheckOutsideClick,
+  ColorPicker,
+  CustomButton,
+  FilePicker,
+  Tab,
+} from '../components';
 import { reader } from '../config/helpers';
 
 const Customizer = () => {
@@ -21,9 +27,23 @@ const Customizer = () => {
   const generateTabContent = () => {
     switch (activeEditorTab) {
       case 'colorpicker':
-        return <ColorPicker />;
+        return (
+          <CheckOutsideClick
+            className="absolute left-full ml-3"
+            handleClick={() => setActiveEditorTab('')}
+          >
+            <ColorPicker />
+          </CheckOutsideClick>
+        );
       case 'filepicker':
-        return <FilePicker file={file} setFile={setFile} readFile={readFile} />;
+        return (
+          <CheckOutsideClick
+            className="filepicker-container"
+            handleClick={() => setActiveEditorTab('')}
+          >
+            <FilePicker file={file} setFile={setFile} readFile={readFile} />
+          </CheckOutsideClick>
+        );
       default:
         return null;
     }
@@ -85,7 +105,7 @@ const Customizer = () => {
                   <Tab
                     key={tab.name}
                     tab={tab}
-                    isActiveTab=""
+                    isActiveTab={tab.name}
                     handleClick={() => setActiveEditorTab(tab.name)}
                   />
                 ))}

@@ -8,7 +8,7 @@ interface Props {
 
 const FilePicker = ({ file, setFile, readFile }: Props) => {
   return (
-    <div className="filepicker-container">
+    <>
       <div className="flex flex-1 flex-col">
         <input
           id="file-upload"
@@ -37,7 +37,7 @@ const FilePicker = ({ file, setFile, readFile }: Props) => {
           handleClick={() => readFile('full')}
         />
       </div>
-    </div>
+    </>
   );
 };
 
