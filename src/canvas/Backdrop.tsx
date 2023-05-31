@@ -1,9 +1,14 @@
 // @ts-nocheck
 import { useRef } from 'react';
 import { AccumulativeShadows, RandomizedLight } from '@react-three/drei';
+import { useSnapshot } from 'valtio';
+
+import state from '../store';
 
 const Backdrop = () => {
   const shadowsRef = useRef(null);
+
+  const snap = useSnapshot(state);
 
   return (
     <AccumulativeShadows
@@ -14,6 +19,7 @@ const Backdrop = () => {
       scale={10}
       rotation={[Math.PI / 2, 0, 0]}
       position={[0, 0, -0.14]}
+      color={snap.color}
     >
       <RandomizedLight
         amount={4}

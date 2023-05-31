@@ -13,8 +13,8 @@ const Header = () => {
         <div className="flex w-full justify-between items-center py-4 px-5 2xl:px-64 xl:px-44 lg:px-20 md:px-16 sm:px-10">
           <motion.div {...slideAnimation('left')}>
             <img
-              className="w-8 h-8 object-contain"
-              src="./threejs.png"
+              className="w-16 h-16 object-contain"
+              src="./pickamix-logo.svg"
               alt="logo"
             />
           </motion.div>
