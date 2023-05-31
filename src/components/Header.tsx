@@ -14,7 +14,7 @@ const Header = () => {
           <motion.div {...slideAnimation('left')}>
             <img
               className="w-16 h-16 object-contain"
-              src="./pickamix-logo.svg"
+              src="./pick-n-mix-logo.svg"
               alt="logo"
             />
           </motion.div>
