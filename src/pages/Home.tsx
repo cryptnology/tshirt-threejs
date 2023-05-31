@@ -26,7 +26,7 @@ const Home = () => {
             >
               <motion.div {...headTextAnimation}>
                 <h1 className="xl:text-[10rem] text-[6rem] xl:leading-[11rem] leading-[7rem] font-black">
-                  LET'S <br className="xl:block hidden" /> DO IT.
+                  MIX & <br className="xl:block hidden" /> MATCH.
                 </h1>
               </motion.div>
               <motion.div
@@ -34,10 +34,9 @@ const Home = () => {
                 {...headContainerAnimation}
               >
                 <p className="max-w-md font-normal opacity-70 text-base">
-                  Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                  Totam, officia vitae recusandae mollitia tenetur animi saepe
-                  voluptatibus sapiente velit, ut placeat iste ratione quaerat
-                  nostrum quas ipsa nihil rem nulla.
+                  Create your unique and exclusive shirt with a 3D customization
+                  tool. <strong>Unleash your imagination</strong> and define
+                  your own style.
                 </p>
               </motion.div>
               <div>
